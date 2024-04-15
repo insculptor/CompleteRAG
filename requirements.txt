@@ -1,0 +1,26 @@
+# local package
+-e .
+
+# external requirements
+python-dotenv>=0.5.1
+PyMuPDF
+matplotlib==3.8.3
+numpy==1.26.4
+pandas==2.2.1
+Requests==2.31.0
+sentence_transformers==2.5.1
+spacy
+tqdm==4.66.2
+transformers==4.38.2
+accelerate
+bitsandbytes
+jupyter
+wheel
+lxml
+reportlab
+langchain
+tiktoken
+# flash-attn
+pymongo
+streamlit
+
