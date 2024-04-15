@@ -125,6 +125,14 @@ def main():
 
         # Display the DataFrame using Streamlit
         st.dataframe(df)
+        # Bar Chart for Document Word Count
+        st.subheader('Document Word Count Overview')
+        st.bar_chart(df.set_index('Document Name')['# Words'])
+
+        # Bar Chart for Page Count
+        st.subheader('Page Count Overview')
+        st.bar_chart(df.set_index('Document Name')['# Pages'])
+        
     else:
         st.write("No data found in MongoDB.")
 if __name__ == "__main__":
