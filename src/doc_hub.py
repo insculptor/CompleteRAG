@@ -89,8 +89,6 @@ def main():
                 cols = ['document_name', 'document_word_count', 'document_page_count','page_number', 'page_char_count', 'page_word_count','page_sentence_count', 'page_token_count', 'page_text','page_mega_chunk_count', 'mega_chunk_number', 'mega_chunk','mega_chunk_summary', 'mega_chunk_summary_embedding_index','chunks','chunks_embedding_list_index']
                 all_documents_data = all_documents_data[cols]
                 insert_into_mongodb(all_documents_data)
-                update_chunk_mapping_collection(all_documents_data)
-                insert_into_document_master(all_documents_data)
                 st.write(f"Metadata generated for: {file_path}")
                 st.write(all_documents_data)
 
@@ -109,17 +107,27 @@ def main():
          
     # Display records from MongoDB
     st.header("Available Documents:")
-    # Fetch and display data
-    docs_to_display = collection.find({}, {'_id': 0}).limit(20)  # Exclude '_id', modify as needed to implement pagination
-    df = pd.DataFrame(list(docs_to_display))
+    # Fetch the top 20 documents sorted by 'insert_timestamp' in descending order
+    # Exclude '_id' from the results
+    docs_to_display = collection.find({}, {'_id': 0}).sort('insert_timestamp', -1)
+    df = pd.DataFrame(list(docs_to_display)).head(20)
 
     if not df.empty:
-        # Rename 'document_name' to 'Document Name'
-        df = df.rename(columns={'document_name': 'Document Name', 'document_word_count': '# Words', 'document_page_count': '# Pages'})
+        # Rename column names for better readability in the UI
+        df = df.rename(columns={
+            'document_name': 'Document Name',
+            'document_word_count': '# Words',
+            'document_page_count': '# Pages',
+            'insert_timestamp': 'Insert Timestamp'
+        })
+
+        # Format the 'Insert Timestamp' for better readability, if the column exists
+        if 'Insert Timestamp' in df.columns:
+            df['Insert Timestamp'] = pd.to_datetime(df['Insert Timestamp']).dt.strftime('%Y-%m-%d %H:%M:%S')
+
+        # Display the DataFrame using Streamlit
         st.dataframe(df)
     else:
         st.write("No data found in MongoDB.")
-
-
 if __name__ == "__main__":
     main()

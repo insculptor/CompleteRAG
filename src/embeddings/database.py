@@ -12,6 +12,7 @@
 import os
 from pathlib import Path
 import faiss
+import datetime
 import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
@@ -26,6 +27,8 @@ def insert_into_mongodb(df):
     df['_id'] = df['mega_chunk_summary_embedding_index']
     data_dict = df.to_dict("records")
     collection.insert_many(data_dict)
+    update_chunk_mapping_collection(df)
+    insert_into_document_master(df)
     print(f"[INFO]: Successfully Inserted!")
     
 def update_chunk_mapping_collection(input_df):
@@ -69,7 +72,7 @@ def update_chunk_mapping_collection(input_df):
     collection = db[os.environ["MONGODB_MAPPING_COLLECTION"]]
     data_dict = final_df.to_dict("records")
     collection.insert_many(data_dict)
-    print(f"[INFO]: Successfully Inserted!")
+    print(f"[INFO]: Successfully Inserted into Mapping!")
     
 def insert_into_document_master(df):
     client = MongoClient(os.environ["MONGODB_IP"], int(os.environ["MONGODB_PORT"]))
@@ -77,6 +80,7 @@ def insert_into_document_master(df):
     df = df[['document_name', 'document_word_count', 'document_page_count']].drop_duplicates()
     collection = db[os.environ["MONGODB_DOCUMENTS_MASTER_COLLECTION"]]
     df['_id'] = df['document_name']+".pdf"
+    df['insert_timestamp'] = datetime.datetime.now()
     data_dict = df.to_dict("records")
     # Initialize counter for inserted documents
     inserted_count = 0
@@ -88,4 +92,4 @@ def insert_into_document_master(df):
             inserted_count += 1
 
     # Logging the result
-    print(f"[INFO]: Successfully inserted {inserted_count} new documents.")
+    print(f"[INFO]: Successfully inserted {inserted_count} new documents into master collection.")
