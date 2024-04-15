@@ -89,10 +89,8 @@ def main():
                 cols = ['document_name', 'document_word_count', 'document_page_count','page_number', 'page_char_count', 'page_word_count','page_sentence_count', 'page_token_count', 'page_text','page_mega_chunk_count', 'mega_chunk_number', 'mega_chunk','mega_chunk_summary', 'mega_chunk_summary_embedding_index','chunks','chunks_embedding_list_index']
                 all_documents_data = all_documents_data[cols]
                 insert_into_mongodb(all_documents_data)
-                st.write(f"Metadata generated for: {file_path}")
+                st.write(f"Successfully Inserted: {os.path.basename(file_path)}")
                 st.write(all_documents_data)
-
-                #insert_into_document_master(embeddings)
             else:
                 all_files_processed = False
                 st.write(f"Failed to process {uploaded_file.name}.")
