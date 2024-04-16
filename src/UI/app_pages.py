@@ -259,3 +259,37 @@ def vectordoc_hub():
     # Footer
     st.write('---')
     st.caption("RAG Playground: Explore financial insights through conversation.")
+    
+    
+#######################
+## MEGA CHUNK VIEWER ##
+#######################
+
+## Mega Chunk Viewer
+def mega_chunk_viewer():
+    st.markdown(css, unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>🔍 Mega Chunk Viewer </h1>", unsafe_allow_html=True)
+    st.header('Query and Display Mega Chunk Data', divider="rainbow")
+
+    # Set up MongoDB connection
+    client = MongoClient(os.environ["MONGODB_IP"], int(os.environ["MONGODB_PORT"]))
+    db = client[os.environ["MONGODB_DB"]]
+    collection = db[os.environ["MONGODB_COLLECTION"]]
+
+    # User input for Mega Chunk ID
+    mega_chunk_id = st.text_input("Enter Mega Chunk ID:", key="mega_chunk_id")
+    if st.button('Show Mega Chunk Data'):
+        if mega_chunk_id:
+            # Query the MongoDB collection for the entered Mega Chunk ID
+            result = collection.find_one({"_id": int(mega_chunk_id)})
+            if result:
+                st.write("Mega Chunk Details:")
+                st.json(result)  # Displaying the result as JSON for clarity
+            else:
+                st.write("No data found for the given Mega Chunk ID.")
+        else:
+            st.write("Please enter a valid Mega Chunk ID.")
+
+    # Footer
+    st.write('---')
+    st.caption("Mega Chunk Viewer: Explore detailed data for specific mega chunks.")
