@@ -1,3 +1,11 @@
+"""
+####################################################################################
+#####                       File name: app_pages.py                            #####
+#####                         Author: Ravi Dhir                                #####
+#####                      Created on: 12/04/2024                              #####
+#####                     Web Pages and Functionality                          #####
+####################################################################################
+"""
 import os
 from pathlib import Path
 import streamlit as st
@@ -16,7 +24,7 @@ from src.embeddings.models import get_reranked_chunks
 from src.generation.llm import get_llm, get_input_tokens, generate_llm_response
 from src.augmentation.prompts import create_prompt
 ## Chatting
-from src.htmltemplates import css, bot_template, user_template
+from src.UI.htmltemplates import css, bot_template, user_template
 
 ## DocHub
 from langchain.text_splitter import RecursiveCharacterTextSplitter
