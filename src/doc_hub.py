@@ -30,7 +30,7 @@ collection = db[os.environ["MONGODB_DOCUMENTS_MASTER_COLLECTION"]]
 
 def main():
     # Page configuration and styling
-    st.set_page_config(page_title="🤖 VectorDoc Hub", page_icon="🤖", layout="wide")
+    st.set_page_config(page_title="VectorDoc Hub", page_icon="🤖", layout="wide")
     st.markdown(css, unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center;'>🤖 VectorDoc Hub </h1>", unsafe_allow_html=True)
     st.header('Admin Panel to manage All Documents.', divider="rainbow")    
@@ -133,5 +133,10 @@ def main():
         st.bar_chart(df.set_index('Document Name')['# Pages'])
     else:
         st.write("No data found in MongoDB.")
+        
+    # Footer
+    st.write('---')
+    st.caption("RAG Playground: Explore financial insights through conversation.")
+    
 if __name__ == "__main__":
     main()

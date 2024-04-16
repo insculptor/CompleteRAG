@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 
 ## Conversational BufferMemory
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-
 from src.retrieval.retrieval import get_query_embeddings, search_embedding, get_mega_chunks_by_indices, get_all_chunks_for_mega_chunks_list
 from src.embeddings.models import get_reranked_chunks
 from src.generation.llm import get_llm, get_input_tokens, generate_llm_response
@@ -84,7 +82,7 @@ with st.expander("Adjust Parameters"):
 user_query = st.text_input("Ask me anything about finance...", key="query_input")
 
 # Handling the user query and generating response
-if st.button("Send") and user_query:
+if st.button("Ask") and user_query:
     retrieved_data, reranked_chunks = add_chat_and_generate_response(user_query)
     display_chat_history()
 
@@ -105,6 +103,6 @@ if 'show_metadata' in st.session_state.parameters and st.session_state.parameter
     except NameError:
         pass
 
-# Additional instructions or footer
+# Footer
 st.write('---')
 st.caption("RAG Playground: Explore financial insights through conversation.")

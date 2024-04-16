@@ -14,7 +14,7 @@ css = '''
     justify-content: end;
 }
 .chat-message.bot {
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     justify-content: start;
 }
 .chat-message .avatar img {
@@ -34,7 +34,7 @@ css = '''
 }
 .stButton>button {
         color: white;
-        background-color: brown;
+        background-color: #f63366;
         border-radius: 5px;
         border: 1px solid #4CAF50;
     }
@@ -44,7 +44,7 @@ css = '''
 bot_template = '''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://i.ibb.co/cN0nmSj/Screenshot-2023-05-28-at-02-37-21.png" alt="Bot">
+        <img src="img/bot.png" alt="Bot">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
@@ -54,7 +54,7 @@ user_template = '''
 <div class="chat-message user">
     <div class="message">{{MSG}}</div>
     <div class="avatar">
-        <img src="https://i.ibb.co/rdZC7LZ/Photo-logo-1.png" alt="User">
+        <img src="img/user.png" alt="User">
     </div>    
 </div>
 '''
