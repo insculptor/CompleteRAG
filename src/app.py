@@ -79,10 +79,15 @@ with st.expander("Adjust Chat Parameters"):
     params['topk'] = st.slider('Top-k', min_value=1, max_value=10, value=5, step=1, help='Top-k Values to Sample.')
 
 # User query input
-user_query = st.text_input("Ask me anything about finance...", key="query_input")
+col1, col2 = st.columns([25, 1])
+with col1:
+    user_query = st.text_input("Ask a query...", key="query_input")
+with col2:
+    insert_button = st.button('Ask', key='user_query')
+
 
 # Handling the user query and generating response
-if st.button("Ask") and user_query:
+if insert_button and user_query:
     retrieved_data, reranked_chunks = add_chat_and_generate_response(user_query)
     display_chat_history()
 

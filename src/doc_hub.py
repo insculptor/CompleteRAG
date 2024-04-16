@@ -36,8 +36,31 @@ def main():
     st.header('Admin Panel to manage All Documents.', divider="rainbow")    
     # File uploader allows user to upload multiple PDFs
     
-    uploaded_files = st.file_uploader("Add Documents to Vector Hub:", accept_multiple_files=True, type='pdf')
-    insert_button = st.button('Insert Documents', key='insert_docs')
+    
+    
+    
+    # User query input
+    col1, col2 = st.columns([20, 1])
+    with col1:
+        uploaded_files = st.file_uploader("Add Documents to Vector Hub:", accept_multiple_files=True, type='pdf')
+    with col2:
+        st.markdown("""
+            <style>
+            .stButton>button {
+                color: white;  /* Changed text color to black for better visibility */
+                background-color: #f63366;  /* Bright red color for the button */
+                border-radius: 5px;
+                border: none;  /* Removed border for a cleaner look */
+                padding: 10px 20px;  /* Added padding for better button sizing */
+                margin-top: 33px;  /* Ensured margin to align with other elements vertically */
+                transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+            }
+            .stButton>button:hover {
+                background-color: #cc2a49;  /* Darker shade of the button color on hover */
+            }
+            </style>""", unsafe_allow_html=True)
+        insert_button = st.button('Insert', key='insert_docs')
+    
     staging_dir = Path(os.environ.get("STAGING_DIR"))
 
     if insert_button:
@@ -98,7 +121,7 @@ def main():
                 os.remove(file_path)
             
             if all_files_processed:
-                st.success("All files processed and data inserted into MongoDB successfully!")
+                st.success("All files processed and data inserted into Database successfully!")
             else:
                 st.error("Some files were not processed due to errors.")
          

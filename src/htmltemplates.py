@@ -2,7 +2,7 @@ css = '''
 <style>
 .chat-message {
     padding: 0.8rem;
-    border-radius: 0 rem;
+    border-radius: 5px;  /* Adjusted for slight rounding */
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -10,33 +10,39 @@ css = '''
 }
 .chat-message.user {
     background-color: #ffffff;
-    justify-content: end;
+    justify-content: flex-end;  /* Changed to flex-end for proper alignment */
 }
 .chat-message.bot {
     background-color: #ffffff;
-    justify-content: start;
+    justify-content: flex-start;  /* Changed to flex-start for proper alignment */
 }
 .chat-message .avatar img {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 50%;  /* Ensures the avatar is circular */
     object-fit: cover;
     margin: 0 10px;
 }
 .chat-message .message {
     padding: 0.5rem 1rem;
-    color: #333;
-    background-color: #eef2f7;
-    border-radius: 15px;
+    color: #333;  /* Dark grey color for text, ensuring good readability */
+    background-color: #eef2f7;  /* Light blue background for messages */
+    border-radius: 15px;  /* Rounded corners for message bubbles */
     max-width: 80%;
-    word-wrap: break-word;
+    word-wrap: break-word;  /* Ensures text does not overflow */
 }
 .stButton>button {
-        color: white;
-        background-color: #f63366;
-        border-radius: 5px;
-        border: 1px solid #4CAF50;
-    }
+    color: white;  /* Changed text color to black for better visibility */
+    background-color: #f63366;  /* Bright red color for the button */
+    border-radius: 5px;
+    border: none;  /* Removed border for a cleaner look */
+    padding: 10px 20px;  /* Added padding for better button sizing */
+    margin-top: 23px;  /* Ensured margin to align with other elements vertically */
+    transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+}
+.stButton>button:hover {
+    background-color: #cc2a49;  /* Darker shade of the button color on hover */
+}
 </style>
 '''
 
