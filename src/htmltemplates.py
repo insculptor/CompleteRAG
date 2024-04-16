@@ -7,7 +7,6 @@ css = '''
     display: flex;
     align-items: center;
     font-size: 0.9rem;
-    border: 1px solid #e1e4e8;
 }
 .chat-message.user {
     background-color: #ffffff;
@@ -54,7 +53,7 @@ user_template = '''
 <div class="chat-message user">
     <div class="message">{{MSG}}</div>
     <div class="avatar">
-        <img src="https://raw.githubusercontent.com/insculptor/CompleteRAG/main/img/user.png" height="100" alt="User">
+        <img src="https://raw.githubusercontent.com/insculptor/CompleteRAG/main/img/user.png" height="50" alt="User">
     </div>    
 </div>
 '''

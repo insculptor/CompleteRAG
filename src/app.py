@@ -71,7 +71,7 @@ def display_chat_history():
             st.markdown(bot_template.replace("{{MSG}}", content), unsafe_allow_html=True)
 
 # Expander for adjusting search parameters
-with st.expander("Adjust Parameters"):
+with st.expander("Adjust Chat Parameters"):
     params = st.session_state.parameters
     params['vector_store'] = st.radio('Choose Vector Search Method:', ['L2', 'HNSW'], index=0, help='Select whether to use L2 or HNSW for searching.')
     params['show_metadata'] = st.checkbox('Show Metadata', value=True)
