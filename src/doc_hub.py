@@ -40,7 +40,7 @@ def main():
     
     
     # User query input
-    col1, col2 = st.columns([20, 1])
+    col1, col2 = st.columns([5, 1])
     with col1:
         uploaded_files = st.file_uploader("Add Documents to Vector Hub:", accept_multiple_files=True, type='pdf')
     with col2:
