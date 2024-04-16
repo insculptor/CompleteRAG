@@ -2,7 +2,7 @@ css = '''
 <style>
 .chat-message {
     padding: 0.8rem;
-    border-radius: 0.5rem;
+    border-radius: 0 rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -10,11 +10,11 @@ css = '''
     border: 1px solid #e1e4e8;
 }
 .chat-message.user {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     justify-content: end;
 }
 .chat-message.bot {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     justify-content: start;
 }
 .chat-message .avatar img {
@@ -44,7 +44,7 @@ css = '''
 bot_template = '''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="img/bot.png" alt="Bot">
+        <img src="https://github.com/insculptor/CompleteRAG/blob/main/img/bot.png?raw=true" alt="Bot">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
@@ -54,7 +54,7 @@ user_template = '''
 <div class="chat-message user">
     <div class="message">{{MSG}}</div>
     <div class="avatar">
-        <img src="img/user.png" alt="User">
+        <img src="https://raw.githubusercontent.com/insculptor/CompleteRAG/main/img/user.png" height="100" alt="User">
     </div>    
 </div>
 '''
