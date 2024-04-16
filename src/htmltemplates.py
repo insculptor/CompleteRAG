@@ -32,6 +32,12 @@ css = '''
     max-width: 80%;
     word-wrap: break-word;
 }
+.stButton>button {
+        color: white;
+        background-color: brown;
+        border-radius: 5px;
+        border: 1px solid #4CAF50;
+    }
 </style>
 '''
 
