@@ -22,11 +22,11 @@ from src.UI.app_pages import finsight_rag, vectordoc_hub,mega_chunk_viewer
 
 # Navigation sidebar
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("", ["Finsight RAG", "VectorDoc Hub", "Mega Chunks" ])
+page = st.sidebar.radio("", ["Finsight RAG", "VectorDoc Hub", "Mega Chunk Viewer" ])
 
 if page == "Finsight RAG":
     finsight_rag()
 elif page == "VectorDoc Hub":
     vectordoc_hub()
-elif page == "Mega Chunks":
+elif page == "Mega Chunk Viewer":
     mega_chunk_viewer()
