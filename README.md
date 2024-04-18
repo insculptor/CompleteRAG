@@ -4,6 +4,7 @@ FinsightRAG (Retrieval-Augmented Generation) is an advanced pipeline designed to
 
 >**NOTE:** CompleteRAG is currently a WIP. Stay tuned for updates and new features!
 
+
 ## Architecture Overview
 
 CompleteRAG's architecture is designed to efficiently handle and respond to user queries by accessing a vast knowledge base of financial information. The architecture diagram below offers a visual representation of the system's workflow and component integration.
