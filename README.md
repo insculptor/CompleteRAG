@@ -1,6 +1,6 @@
-# 🚀 CompleteRAG: Enhancing Financial Understanding with AI
+# 🚀 FinsightRAG: Enhancing Financial Understanding with AI
 
-CompleteRAG (Retrieval-Augmented Generation) is an advanced pipeline designed to demystify financial terms and concepts by leveraging the extensive database of Investopedia. This project aims to provide users with precise and comprehensible explanations of financial terms through a process that summarizes, retrieves, reranks, augments, and generates responses. It serves as a comprehensive tool for individuals seeking clear insights into the complex world of finance.
+FinsightRAG (Retrieval-Augmented Generation) is an advanced pipeline designed to demystify financial terms and concepts by leveraging the extensive database of Investopedia. This project aims to provide users with precise and comprehensible explanations of financial terms through a process that summarizes, retrieves, reranks, augments, and generates responses. It serves as a comprehensive tool for individuals seeking clear insights into the complex world of finance.
 
 >**NOTE:** CompleteRAG is currently a WIP. Stay tuned for updates and new features!
 
