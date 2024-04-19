@@ -9,7 +9,7 @@ FinsightRAG (Retrieval-Augmented Generation) is an advanced pipeline designed to
 
 CompleteRAG's architecture is designed to efficiently handle and respond to user queries by accessing a vast knowledge base of financial information. The architecture diagram below offers a visual representation of the system's workflow and component integration.
 
-![RAG Architecture Diagram](https://github.com/insculptor/FinsightRAG/blob/main/img/RAGArchitecture%20Diagram.gif)
+![RAG Architecture Diagram](https://github.com/insculptor/FinsightRAG/blob/master/img/RAGArchitecture%20Diagram.gif?raw=true)
 
 ## Detailed Project Workflow
 
