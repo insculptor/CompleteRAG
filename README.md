@@ -2,20 +2,20 @@
 
 FinsightRAG (Retrieval-Augmented Generation) is an advanced pipeline designed to demystify financial terms and concepts by leveraging the extensive database of Investopedia. This project aims to provide users with precise and comprehensible explanations of financial terms through a process that summarizes, retrieves, reranks, augments, and generates responses. It serves as a comprehensive tool for individuals seeking clear insights into the complex world of finance.
 
->**NOTE:** FinsightRAG is currently a WIP. Stay tuned for updates and new features!
+>**NOTE:** CompleteRAG is currently a WIP. Stay tuned for updates and new features!
 
 
 ## Architecture Overview
 
-FinsightRAG's architecture is designed to efficiently handle and respond to user queries by accessing a vast knowledge base of financial information. The architecture diagram below offers a visual representation of the system's workflow and component integration.
+CompleteRAG's architecture is designed to efficiently handle and respond to user queries by accessing a vast knowledge base of financial information. The architecture diagram below offers a visual representation of the system's workflow and component integration.
 
-![RAG Architecture Diagram](https://github.com/insculptor/FinsightRAG/blob/main/img/RAGArchitecture%20Diagram.gif)
+![RAG Architecture Diagram](https://github.com/insculptor/FinsightRAG/blob/master/img/RAGArchitecture%20Diagram.gif?raw=true)
 
 ## Detailed Project Workflow
 
 ### 1. Project Setup
 
-The setup process for FinsightRAG involves several critical steps to ensure the system's optimal functionality and scalability:
+The setup process for CompleteRAG involves several critical steps to ensure the system's optimal functionality and scalability:
 
 - **Cookiecutter Integration:**
     - Utilize the Data Science Project Template through Cookiecutter for structured project organization. [Template Repository](https://github.com/drivendata/cookiecutter-data-science)
@@ -28,7 +28,7 @@ The setup process for FinsightRAG involves several critical steps to ensure the 
 
 - **Initial Repository Setup:**
     ```bash
-    git clone https://github.com/insculptor/FinsightRAG.git
+    git clone https://github.com/insculptor/CompleteRAG.git
     ```
 
 - **Component Configuration:**
@@ -36,7 +36,7 @@ The setup process for FinsightRAG involves several critical steps to ensure the 
 
 ### 2. Data Acquisition and Preparation
 
-For accurate and relevant financial explanations, FinsightRAG meticulously processes and organizes data from Investopedia and other financial documents:
+For accurate and relevant financial explanations, CompleteRAG meticulously processes and organizes data from Investopedia and other financial documents:
 
 - **Investopedia Data Crawling:**
     - Included in the project are a Jupyter Notebook and a Python script (`notebooks/scrape_investopedia.ipynb` & `scrape_investopedia.py`) designed for extracting Investopedia data, storing each term in individual PDFs for comprehensive analysis.
@@ -49,11 +49,11 @@ For accurate and relevant financial explanations, FinsightRAG meticulously proce
 
 ## Getting Started
 
-Follow these setup instructions to begin working with FinsightRAG:
+Follow these setup instructions to begin working with CompleteRAG:
 
 1. **Clone the Repository:**
     ```bash
-    git clone https://github.com/insculptor/FinsightRAG.git
+    git clone https://github.com/insculptor/CompleteRAG.git
     ```
 
 2. **Environment Setup:**
@@ -63,8 +63,8 @@ Follow these setup instructions to begin working with FinsightRAG:
 3. **Data Preparation:**
     - Adhere to the guidelines in section 2 for preparing your financial data.
 
-4. **Launch FinsightRAG:**
-    - With the setup completed, you can now utilize FinsightRAG to navigate and understand financial terms effortlessly.
+4. **Launch CompleteRAG:**
+    - With the setup completed, you can now utilize CompleteRAG to navigate and understand financial terms effortlessly.
 
 ## Mega Chunking
 
