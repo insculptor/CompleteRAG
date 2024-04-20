@@ -33,8 +33,8 @@ import torch
 import fitz
 import pandas as pd
 from dotenv import load_dotenv
-from src.embeddings.models import get_embedding_model
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+from embeddings.models import get_embedding_model
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 
 

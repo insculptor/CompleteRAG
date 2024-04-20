@@ -19,22 +19,29 @@ from dotenv import load_dotenv
 
 ## Conversational BufferMemory
 from langchain.memory import ConversationBufferMemory
-from src.retrieval.retrieval import get_query_embeddings, search_embedding, get_mega_chunks_by_indices, get_all_chunks_for_mega_chunks_list
-from src.embeddings.models import get_reranked_chunks
-from src.generation.llm import get_llm, get_input_tokens, generate_llm_response
-from src.augmentation.prompts import create_prompt
+from retrieval.retrieval import get_query_embeddings, search_embedding, get_mega_chunks_by_indices, get_all_chunks_for_mega_chunks_list
+from embeddings.models import get_reranked_chunks
+from generation.llm import get_llm, get_input_tokens, generate_llm_response
+from augmentation.prompts import create_prompt
 ## Chatting
-from src.UI.htmltemplates import css, bot_template, user_template
+from UI.htmltemplates import css, bot_template, user_template
 
 ## DocHub
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from src.embeddings.create_embeddings import create_chunks,add_summary_to_dataframe,generate_embeddings,get_document_pagewise_data
-from src.embeddings.models import get_device,get_embedding_model
-from src.embeddings.vectorstore import add_to_faiss_l2_and_hnsw_indices
-from src.embeddings.database import insert_into_mongodb
+from embeddings.models import get_device,get_embedding_model
+from embeddings.vectorstore import add_to_faiss_l2_and_hnsw_indices
+from embeddings.database import insert_into_mongodb
 
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
+
+from embeddings.create_embeddings import Embeddings
+create_embeddings = Embeddings(
+        preprocessed_data_dir=os.environ["PREPROCESSED_DATA_DIR"],
+        processed_data_dir=os.environ["PROCESSED_DATA_DIR"],
+        models_base_dir=os.environ["MODELS_BASE_DIR"],
+        summarization_model_name=os.environ["SUMMARIZATION_MODEL"]
+    )
 
 def finsight_rag():
     st.markdown(css, unsafe_allow_html=True)
@@ -176,7 +183,7 @@ def vectordoc_hub():
                     f.write(uploaded_file.getbuffer())
                 
                 # Check if the document already exists in MongoDB
-                doc_data = pd.DataFrame(get_document_pagewise_data(file_path))  # assuming it returns DataFrame with necessary data
+                doc_data = pd.DataFrame(create_embeddings.get_document_pagewise_data(file_path))  # assuming it returns DataFrame with necessary data
                 if not doc_data.empty:
                     doc_name = os.path.splitext(uploaded_file.name)[0]
                     doc_word_count = int(doc_data['document_word_count'].iloc[0])
@@ -199,13 +206,13 @@ def vectordoc_hub():
                             doc_data['document_name'] = doc_name
 
                     # Process and insert the new/updated version of the document
-                    all_documents_data = create_chunks(doc_data)
+                    all_documents_data = create_embeddings.create_chunks(doc_data)
                     llm_base_path = Path(os.environ["MODELS_BASE_DIR"])
                     llm_model_name = os.environ["SUMMARIZATION_MODEL"]
                     print(f" {llm_base_path=} | {llm_model_name=}")
-                    add_summary_to_dataframe(all_documents_data, llm_model_name,llm_base_path,get_device())
+                    all_documents_data = create_embeddings.add_summary_to_dataframe(all_documents_data, llm_model_name,llm_base_path,get_device())
                     angle = get_embedding_model().to(get_device())
-                    all_documents_data = generate_embeddings(all_documents_data, angle)
+                    all_documents_data = create_embeddings.generate_embeddings(all_documents_data, angle)
                     all_documents_data = add_to_faiss_l2_and_hnsw_indices(all_documents_data, os.environ["VECTORSTORE_BASE_DIR"])
                     cols = ['document_name', 'document_word_count', 'document_page_count','page_number', 'page_char_count', 'page_word_count','page_sentence_count', 'page_token_count', 'page_text','page_mega_chunk_count', 'mega_chunk_number', 'mega_chunk','mega_chunk_summary', 'mega_chunk_summary_embedding_index','chunks','chunks_embedding_list_index']
                     all_documents_data = all_documents_data[cols]

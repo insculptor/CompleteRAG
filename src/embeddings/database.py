@@ -18,7 +18,7 @@ import pandas as pd
 from tqdm.auto import tqdm
 from pymongo import MongoClient
 from dotenv import load_dotenv
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 def insert_into_mongodb(df):
     client = MongoClient(os.environ["MONGODB_IP"], int(os.environ["MONGODB_PORT"]))

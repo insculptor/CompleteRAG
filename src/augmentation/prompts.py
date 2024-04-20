@@ -13,7 +13,7 @@ import pandas as pd
 import transformers
 from transformers import AutoTokenizer
 from dotenv import load_dotenv
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 
 def create_prompt(query,reranked_chunks,tokenizer):

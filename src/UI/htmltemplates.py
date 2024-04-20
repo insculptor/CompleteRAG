@@ -57,7 +57,7 @@ css = '''
 bot_template = '''
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://github.com/insculptor/CompleteRAG/blob/main/img/bot.png?raw=true" alt="Bot">
+        <img src="https://raw.githubusercontent.com/insculptor/FinsightRAG/main/img/bot.png" alt="Bot">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
@@ -67,7 +67,7 @@ user_template = '''
 <div class="chat-message user">
     <div class="message">{{MSG}}</div>
     <div class="avatar">
-        <img src="https://raw.githubusercontent.com/insculptor/CompleteRAG/main/img/user.png" height="50" alt="User">
+        <img src="https://raw.githubusercontent.com/insculptor/FinsightRAG/main/img/user.png" height="50" alt="User">
     </div>    
 </div>
 '''

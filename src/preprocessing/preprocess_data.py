@@ -14,7 +14,7 @@ import re
 import fitz
 import pandas as pd
 from dotenv import load_dotenv
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 def preprocess_text(text):
     """

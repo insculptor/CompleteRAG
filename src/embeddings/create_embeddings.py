@@ -16,12 +16,12 @@ from pathlib import Path
 from tqdm.auto import tqdm
 from dotenv import load_dotenv
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from src.embeddings.utils import timer
-from src.embeddings.models import summarize_mega_chunk, get_embedding_model
-from src.embeddings.vectorstore import add_to_faiss_l2_and_hnsw_indices
-from src.embeddings.database import insert_into_mongodb, update_chunk_mapping_collection, insert_into_document_master
+from embeddings.utils import timer
+from embeddings.models import summarize_mega_chunk, get_embedding_model
+from embeddings.vectorstore import add_to_faiss_l2_and_hnsw_indices
+from embeddings.database import insert_into_mongodb, update_chunk_mapping_collection, insert_into_document_master
 ## Load Environment Variables
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 
 class Embeddings:
@@ -203,32 +203,3 @@ class Embeddings:
         df['mega_chunk_summary_embedding'] = mega_chunk_summary_embeddings
         df['chunks_embedding_list'] = chunks_embedding_list
         return df
-
-
-if __name__ == "__main__":
-    processor = Embeddings(
-        preprocessed_data_dir=os.environ["PREPROCESSED_DATA_DIR"],
-        processed_data_dir=os.environ["PROCESSED_DATA_DIR"],
-        models_base_dir=os.environ["MODELS_BASE_DIR"],
-        summarization_model_name=os.environ["SUMMARIZATION_MODEL"]
-    )
-    all_documents_data = processor.get_all_documents_data(processor.preprocessed_data_path)
-    print(f"[INFO]: {processor.preprocessed_data_path=} | {processor.processed_data_path=}")
-    all_documents_data = processor.get_all_documents_data(processor.preprocessed_data_path)
-    all_documents_data = processor.create_chunks(all_documents_data)
-    llm_base_path = Path(os.environ["MODELS_BASE_DIR"])
-    llm_model_name = os.environ["SUMMARIZATION_MODEL"]
-    print(f" {llm_base_path=} | {llm_model_name=}")
-    all_documents_data = processor.add_summary_to_dataframe(all_documents_data, llm_model_name,llm_base_path,processor.device)
-    angle = get_embedding_model().to(processor.device)
-    all_documents_data = processor.generate_embeddings(all_documents_data, angle)
-    vectorstore_base_path = os.environ["VECTORSTORE_BASE_DIR"]
-    print(f"{vectorstore_base_path=}")
-    all_documents_data = add_to_faiss_l2_and_hnsw_indices(all_documents_data, vectorstore_base_path)
-    cols = ['document_name', 'document_word_count', 'document_page_count','page_number', 'page_char_count', 'page_word_count','page_sentence_count', 'page_token_count', 'page_text','page_mega_chunk_count', 'mega_chunk_number', 'mega_chunk','mega_chunk_summary', 'mega_chunk_summary_embedding_index','chunks','chunks_embedding_list_index']
-    all_documents_data = all_documents_data[cols]
-    insert_into_mongodb(all_documents_data)
-    update_chunk_mapping_collection(all_documents_data)
-    insert_into_document_master(all_documents_data)
-    all_documents_data.to_json(os.path.join(processor.processed_data_path,"all_chunks2.json"), orient="records", lines=True)
-    all_documents_data.to_json(os.path.join(processor.processed_data_path,"all_chunks_readable2.json"), orient="records", lines=True,indent=4)

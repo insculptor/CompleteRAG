@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from tqdm.auto import tqdm
 from dotenv import load_dotenv
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 
 

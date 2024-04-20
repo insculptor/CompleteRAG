@@ -15,7 +15,7 @@ import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from transformers.utils import is_flash_attn_2_available
 from dotenv import load_dotenv
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 
 def get_model_num_params(model: torch.nn.Module):

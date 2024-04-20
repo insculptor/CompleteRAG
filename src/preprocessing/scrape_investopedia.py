@@ -20,7 +20,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from preprocess_data import preprocess_text,preprocess_text_math
 
 from dotenv import load_dotenv
-load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/CompleteRAG/.env'))
+load_dotenv(Path('C:/Users/erdrr/OneDrive/Desktop/Scholastic/NLP/LLM/RAG/FinsightRAG/.env'))
 
 
 headers = {
